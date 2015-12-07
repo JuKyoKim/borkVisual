@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 	def index
 		@user = "asdfas"
 	end
@@ -12,12 +12,12 @@ class UserController < ApplicationController
 	end
 
 	def create
-		@user = User.new(user_params)
-		if @user.save
-			redirect_to @user
-		else
-			redirect_to root_path
-		end
+		@user = User.new user_params
+    	if @user.save
+      		redirect_to @user
+    	else
+      		render new_user_path
+    	end
 	end
 
 	def edit
@@ -39,12 +39,15 @@ class UserController < ApplicationController
  		redirect_to root_path
 	end
 
+	def about
+		# just a path
+	end
 
 
 	private
 
  	def user_params
- 		params.require(:user).permit()
+ 		params.require(:user).permit(:username, :password, :email)
  	end
 
 

@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <html>
+  
 <head>
   <title>BorkVisual</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+	<header class="navbar navbar-default navbar-fixed-top">
+            <ul class="nav nav-tabs">
+            <!-- need to replace this part when sessions are made -->
+                <% if @current_user.nil? %>
+                    <li role="presentation" class="col-sm-3 text-center">
+                        <%= link_to "Bork IT", root_path %>
+                    </li>
 
-<%= yield %>
+                    <li role="presentation" class="col-sm-3 text-center">
+                    <!-- need to replace with something for logging out -->
+                        <%= link_to "login", sessions_new_path %>
+                    </li>
+                    
+                    <li role="presentation" class="col-sm-3 text-center">
+                        <%= link_to "sign up", new_user_path %>
+                    </li>
 
+                    <li role="presentation" class="col-sm-3 text-center">
+                        <%= link_to "about", about_path %>
+                    </li>
+                <% else %>
+                    <li role="presentation" class="col-sm-4 text-center">
+                        <%= link_to "Bork IT", root_path %>
+                    </li>
+
+                    <li role="presentation" class="col-sm-4 text-center">
+                        <%= link_to "about", about_path %>
+                    </li>
+
+                    <li role="presentation" class="col-sm-4 text-center">
+                        <%= link_to "logout", new_user_path %>
+                    </li>
+
+                <% end %>
+            <!-- need to replace this part when sessions are made -->
+
+                
+            </ul>   
+	</header>
+
+    <div class="mainContainer">
+        <%= yield %>  
+    </div>
+    
+
+	<footer class="navbar navbar-default navbar-fixed-bottom">
+  		<div class="container">
+    		<ul class="nav nav-tabs">
+    			<li role="presentation" class="col-sm-6 text-center">
+    				<%= link_to "github", "https://github.com/JuKyoKim/borkVisual" %>
+    			</li>
+                <li role="presentation" class="col-sm-6 text-center">
+                    <a>&copy tom 2015</a> <!-- got lazy here with styling -->
+                </li>
+    		</ul>
+  		</div>
+	</footer>
 </body>
 </html>

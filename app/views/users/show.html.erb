@@ -1,0 +1,24 @@
+<div class="container overall_container">
+	<div class="col-sm-3">
+		<h1>Hey <%= @user.username %>!</h1>
+		<h3>all your bookmarks are loaded in panels</h3>
+		<h3><%= @user.email %></h2>
+	</div>
+	
+	<div class="bookmark_cards col-sm-9">
+		<!-- need to replace the render with for each card item in database -->
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+		<%= render "card" %>
+	</div>
+
+</div>
