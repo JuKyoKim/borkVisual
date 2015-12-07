@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+
+	before_filter :authorize, :except => [:index, :new, :create]
+
 	def index
-		@user = "asdfas"
 	end
 
 	def show
@@ -14,9 +16,10 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new user_params
     	if @user.save
+    		session[:user_id] = @user.id
       		redirect_to @user
     	else
-      		render new_user_path
+      		redirect_to root_path
     	end
 	end
 
@@ -27,11 +30,8 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		@user.update
-		if @user.save
-			redirect_to @user
-		else
-			redirect_to root_path
-		end
+		@user.save
+		redirect_to @user
 	end
 
 	def destroy
@@ -40,14 +40,13 @@ class UsersController < ApplicationController
 	end
 
 	def about
-		# just a path
 	end
 
 
 	private
 
  	def user_params
- 		params.require(:user).permit(:username, :password, :email)
+ 		params.require(:user).permit(:username, :email, :password, :password_confirmation)
  	end
 
 

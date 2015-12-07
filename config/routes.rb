@@ -1,19 +1,9 @@
 Rails.application.routes.draw do
-  get 'sessions/index'
-
-  get 'sessions/show'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/edit'
-
-  get 'sessions/update'
-
-  get 'sessions/destroy'
-
-  	resources :users
+    resources :bookmarks
+    get 'sessions/new' => 'sessions#new'
+ 	post 'sessions' => 'sessions#create'
+ 	delete 'sessions' => 'sessions#destroy'
+    resources :users
   	root 'users#index'
   	get '/about', to: 'users#about', as: 'about'
 end

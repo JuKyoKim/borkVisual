@@ -13,25 +13,23 @@
             <ul class="nav nav-tabs">
             <!-- need to replace this part when sessions are made -->
                 <% if @current_user.nil? %>
-                    <li role="presentation" class="col-sm-3 text-center">
+                    <li role="presentation" class="col-sm-4 text-center">
                         <%= link_to "Bork IT", root_path %>
                     </li>
 
-                    <li role="presentation" class="col-sm-3 text-center">
+                    <li role="presentation" class="col-sm-4 text-center">
                     <!-- need to replace with something for logging out -->
-                        <%= link_to "login", sessions_new_path %>
+                        <%= link_to "login",  sessions_new_path %>
                     </li>
                     
-                    <li role="presentation" class="col-sm-3 text-center">
+                    <li role="presentation" class="col-sm-4 text-center">
                         <%= link_to "sign up", new_user_path %>
                     </li>
 
-                    <li role="presentation" class="col-sm-3 text-center">
-                        <%= link_to "about", about_path %>
-                    </li>
                 <% else %>
+
                     <li role="presentation" class="col-sm-4 text-center">
-                        <%= link_to "Bork IT", root_path %>
+                        <%= link_to @current_user.username, @current_user %>
                     </li>
 
                     <li role="presentation" class="col-sm-4 text-center">
@@ -39,7 +37,7 @@
                     </li>
 
                     <li role="presentation" class="col-sm-4 text-center">
-                        <%= link_to "logout", new_user_path %>
+                        <%= link_to "logout", '/sessions' , :method => 'delete'%>
                     </li>
 
                 <% end %>
