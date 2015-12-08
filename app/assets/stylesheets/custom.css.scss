@@ -1,13 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body{
-	background:url("http://etc.usf.edu/presentations/backgrounds/grid/grid_02/1110t.gif");	
-}
-
 .index{
 	padding-top: 200px;
-	background:url("http://buzzerg.com/wp-content/uploads/8589130480003-white-nature-wallpaper-hd.jpg");
+	background:url("http://freeuse.io/img_preview/484-black-and-white-lake-nature-sailing.jpg");
+	background-size:cover;
 	margin: 0 auto;
 	width: 100%;
 	height: 950px;
@@ -44,4 +41,8 @@ body{
 
 .overall_container{
 	margin-top: 100px;
+}
+
+.backbutton{
+	margin-bottom: 20px;
 }

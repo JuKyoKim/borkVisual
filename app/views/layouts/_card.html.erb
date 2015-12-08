@@ -1,0 +1,13 @@
+
+<div class="panel panel-default col-sm-4 card">
+	<div class="panel-heading">
+	<h3 class="panel-title"><%= @item["name"] %></h3>
+	
+	</div>
+	<div class="panel-body">
+		<iframe class="embed-responsive-item" src="<%= @item["url"] %>" frameborder="120" style="width: 100%"></iframe>
+		<p><a href=<%= @item["url"] %>>visit page</a></p>
+		<p><%= link_to "delete", "/bookmarks/#{@item['id']}", :method => 'delete' %></p>
+		<p><%= link_to "update", "/bookmarks/#{@item['id']}/edit" %></p>
+	</div>
+</div>

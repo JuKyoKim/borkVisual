@@ -4,14 +4,13 @@ class BookmarksController < ApplicationController
 
   def new
     @bookmark = Bookmark.new
-    @user = User.all
   end
 
   def create
     @bookmark = Bookmark.new bookmark_params
-      if @bookmark.save
-          redirect_to root_path
-      end
+    @bookmark.user_id = @current_user.id
+    @bookmark.save
+    redirect_to @current_user
   end
 
   def edit
@@ -20,19 +19,18 @@ class BookmarksController < ApplicationController
 
   def update
     @bookmark = Bookmark.find(params[:id])
-    @bookmark.update
-    @bookmark.save
-    redirect_to root_path
+    @bookmark.update_attributes(bookmark_params)
+    redirect_to @current_user
   end
 
   def destroy
     @bookmark = Bookmark.find(params[:id]).destroy
-    redirect_to root_path
+    redirect_to @current_user
   end
 
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:url)
+    params.require(:bookmark).permit(:url, :name)
   end
 end

@@ -1,14 +1,4 @@
-<%= form_for (@bookmark), :html => {:class => "form-horizontal forms_for"} do |f| %>
+<div class="form-horizontal forms_for">
     <h1 class="col-sm-12 text-center">add a new bookmark</h1>
-    <div class="form-group">
-		<%= f.label :url, "url:", :class => "col-sm-5 control-label"%>
-    	<%= f.text_field :url, :class => "col-sm-3", :placeholder => "http://www.example.com/"%>
-    </div>
-    
-
-    <div class="form-group">
-        <div class="col-sm-offset-5 col-sm-7">
-            <%= f.submit "add new bookmark", :class => "btn btn-primary" %>
-        </div>
-    </div>
-<%end%>
+    <%= render "form" %>
+</div>

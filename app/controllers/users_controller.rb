@@ -7,6 +7,15 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+
+		@all_url = []
+    	Bookmark.where(user_id: @current_user.id).find_each do |bookmark|
+      		@all_url.push({
+        		"name" => bookmark.name,
+        		"url" => bookmark.url,
+        		"id" => bookmark.id
+      		})
+    	end
 	end
 
 	def new
@@ -24,14 +33,14 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		@user = User.find(@current_user.id)
 	end
 
 	def update
-		@user = User.find(params[:id])
-		@user.update
-		@user.save
-		redirect_to @user
+		@user = User.find(@current_user.id)
+		if @user.update_attributes(user_params)
+			redirect_to @user
+		end
 	end
 
 	def destroy
